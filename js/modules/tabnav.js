@@ -5,27 +5,28 @@ export default class TabNav {
     this.activeClass = 'ativo';
   }
 
-  //ativa a tab de acordo com a index da msm
+  // Ativa a tab de acordo com o index da mesma
   activeTab(index) {
     this.tabContent.forEach((section) => {
-      section.classList.remove("ativo");
+      section.classList.remove(this.activeClass);
     });
     const direcao = this.tabContent[index].dataset.anime;
-    this.tabContent[index].classList.add("ativo", direcao);
+    this.tabContent[index].classList.add(this.activeClass, direcao);
   }
 
-  //adiciona os eventos aos tabs
+  // Adiciona os eventos nas tabs
   addTabNavEvent() {
     this.tabMenu.forEach((itemMenu, index) => {
-      itemMenu.addEventListener("click", () => this.activeTab(index));
+      itemMenu.addEventListener('click', () => this.activeTab(index));
     });
   }
 
   init() {
     if (this.tabMenu.length && this.tabContent.length) {
-      //ativar primeiro item
+      // ativar primeiro item
       this.activeTab(0);
       this.addTabNavEvent();
     }
+    return this;
   }
 }
